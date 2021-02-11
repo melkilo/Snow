@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Booking Payment" max_length="40" name="sn_hbm_booking_payment" type="collection">
+        <element label="Amount" max_length="40" name="amount" type="float"/>
+        <element label="Booking" max_length="32" name="booking" reference="sn_hbm_booking" type="reference"/>
+        <element label="First name" max_length="40" name="first_name" type="string"/>
+        <element label="Last name" max_length="40" name="last_name" type="string"/>
+        <element label="Payment time" max_length="40" name="payment_time" type="glide_date_time"/>
+        <index name="index">
+            <element name="booking"/>
+        </index>
+    </element>
+</database>

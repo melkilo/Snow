@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>false</flush_cache>
+        <name>Generate bookings</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[var roomGr = new GlideRecord('sn_hbm_room');
+roomGr.query();
+while (roomGr.next()) {
+    var startdate = new GlideDate();
+    var enddate = new GlideDate(startdate);
+	enddate.addDaysUTC(7);
+    var startOffset = Math.floor(Math.random() * 6);
+    var endOffset = Math.floor(Math.random() * (7-startOffset));
+    startdate.addDaysUTC(startOffset);
+    enddate.addDaysUTC(-endOffset);
+
+    var bookingDate = new GlideDate();
+    bookingDate.setValue(startdate);
+    bookingDate.addDaysUTC(-Math.floor(Math.random()*120));
+
+    // random guest
+    var userGr = new GlideRecord('sys_user');
+    userGr.query();
+    var i = Math.floor(Math.random() * userGr.getRowCount());
+    while(userGr.next() && i-- > 0) {
+		
+	}
+
+    var bookingGr = new GlideRecord('sn_hbm_booking');
+    bookingGr.initialize();
+    bookingGr.hotel = roomGr.hotel;
+    bookingGr.checkin_date = startdate.getValue();
+    bookingGr.checkout_date = enddate.getValue();
+    bookingGr.guest = userGr.sys_id;
+    bookingGr.booking_date = bookingDate.getValue();
+    var bookingId = bookingGr.insert();
+
+    var bookingRoomGr = new GlideRecord('sn_hbm_booking_room');
+    bookingRoomGr.initialize();
+    bookingRoomGr.room = roomGr.sys_id;
+    bookingRoomGr.cost = roomGr.type.price.getReferenceValue();
+    bookingRoomGr.checkin_date = startdate.getValue();
+    bookingRoomGr.checkout_date = enddate.getValue();
+    bookingRoomGr.booking = bookingId;
+    bookingRoomGr.insert();
+}
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-15 11:33:35</sys_created_on>
+        <sys_id>6b4646224f5e0c10dc212f9ca310c703</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Generate bookings</sys_name>
+        <sys_package display_value="Hotel Booking Management" source="sn_hbm">d9777b1153022200dd9e09da43dc3440</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Hotel Booking Management">d9777b1153022200dd9e09da43dc3440</sys_scope>
+        <sys_update_name>sys_script_fix_6b4646224f5e0c10dc212f9ca310c703</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-15 11:36:34</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

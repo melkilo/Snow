@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Hotel Service" max_length="40" name="sn_hbm_hotel_service" type="collection">
+        <element label="Description" max_length="40" name="description" type="wide_text"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element label="Price" max_length="20" name="price" type="price"/>
+        <element choice="3" default="per_night" label="Price type" max_length="40" name="price_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Per night" sequence="1" value="per_night"/>
+                <element inactive_on_update="false" label="Per booking" sequence="2" value="per_booking"/>
+            </choice>
+        </element>
+    </element>
+</database>

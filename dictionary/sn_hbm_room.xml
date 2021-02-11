@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Room" max_length="40" name="sn_hbm_room" type="collection">
+        <element label="Hotel" max_length="32" name="hotel" reference="sn_hbm_hotel" type="reference"/>
+        <element label="Number" max_length="40" name="number" type="integer"/>
+        <element label="Type" max_length="32" name="type" reference="sn_hbm_room_type" type="reference"/>
+        <index name="index">
+            <element name="hotel"/>
+        </index>
+        <index name="index2">
+            <element name="type"/>
+        </index>
+    </element>
+</database>

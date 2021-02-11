@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Room Type" max_length="40" name="sn_hbm_room_type" type="collection">
+        <element label="Description" max_length="40" name="description" type="wide_text"/>
+        <element label="Image" max_length="40" name="image" type="user_image"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element label="Price" max_length="20" name="price" type="price"/>
+    </element>
+</database>

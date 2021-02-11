@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Sn Hbm M2m Hotel Service Hotel" max_length="40" name="sn_hbm_m2m_hotel_service_hotel" type="collection">
+        <element label="Hotel" max_length="32" name="hotel" reference="sn_hbm_hotel" type="reference"/>
+        <element label="Hotel Service" max_length="32" name="hotel_service" reference="sn_hbm_hotel_service" type="reference"/>
+        <index name="index">
+            <element name="hotel_service"/>
+        </index>
+        <index name="index2">
+            <element name="hotel"/>
+        </index>
+    </element>
+</database>

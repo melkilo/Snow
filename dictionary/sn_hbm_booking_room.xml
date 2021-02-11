@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Booking Room" max_length="40" name="sn_hbm_booking_room" type="collection">
+        <element label="Booking" max_length="32" name="booking" reference="sn_hbm_booking" type="reference"/>
+        <element label="Checkin date" max_length="40" name="checkin_date" type="glide_date"/>
+        <element label="Checkout date" max_length="40" name="checkout_date" type="glide_date"/>
+        <element label="Cost" max_length="40" name="cost" type="float"/>
+        <element label="Number of nights" max_length="40" name="number_of_nights" type="integer"/>
+        <element label="Room" max_length="32" name="room" reference="sn_hbm_room" type="reference"/>
+        <index name="index">
+            <element name="booking"/>
+        </index>
+        <index name="index2">
+            <element name="room"/>
+        </index>
+    </element>
+</database>

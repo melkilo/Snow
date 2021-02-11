@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Booking" max_length="40" name="sn_hbm_booking" type="collection">
+        <element label="Booking date" max_length="40" name="booking_date" type="glide_date"/>
+        <element label="Checkin date" max_length="40" name="checkin_date" type="glide_date"/>
+        <element label="Checkout date" max_length="40" name="checkout_date" type="glide_date"/>
+        <element label="Guest" max_length="32" name="guest" reference="sys_user" type="reference"/>
+        <element label="Hotel" max_length="32" name="hotel" reference="sn_hbm_hotel" type="reference"/>
+        <element display="true" label="Name" max_length="100" name="name" type="string"/>
+        <element label="Number of nights" max_length="40" name="number_of_nights" type="integer"/>
+        <element label="Payment due" max_length="20" name="payment_due" type="float"/>
+        <element choice="1" default="Confirmed" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Requested" sequence="100" value="Requested"/>
+                <element inactive_on_update="false" label="Confirmed" sequence="200" value="Confirmed"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="300" value="Cancelled"/>
+            </choice>
+        </element>
+        <element label="Total cost" max_length="20" name="total_cost" type="float"/>
+        <element label="Total payment" max_length="20" name="total_payment" type="float"/>
+        <index name="index">
+            <element name="hotel"/>
+        </index>
+        <index name="index2">
+            <element name="guest"/>
+        </index>
+    </element>
+</database>
